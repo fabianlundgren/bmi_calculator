@@ -19,11 +19,30 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   $stateProvider
 
-    .state('tab', {
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
-  });
-  $urlRouterProvider.otherwise('/tab/dash');
+  })
+  .state('tab.about', {
+    url: '/about',
+    views: {
+      'tab-about': {
+        templateUrl: 'templates/about/about.html',
+        controller: 'AboutController'
+      }
+    }
+  })
 
+  .state('tab.bmi', {
+  url: '/bmi',
+  views: {
+    'tab-bmi': {
+      templateUrl: 'templates/calculator/calculator.html',
+      controller: 'BmiController'
+    }
+  }
+});
+
+  $urlRouterProvider.otherwise('/tab/about');
 });
